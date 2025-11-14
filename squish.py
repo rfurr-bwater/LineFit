@@ -11,5 +11,17 @@ y = data[:,1].astype(np.float32)
 
 params, params_cov = scipy.optimize.curve_fit(linear, x, y)
 
-slope = params[0]
-intercept = params[1]
+slope = params[0].round(2)
+intercept = params[1].round(2)
+
+### EXERCISE 1
+print_equation(slope,intercept,"grams","milimeters")
+
+### EXCERICE 2
+plt.figure()
+plt.scatter(x,y,label="Data")
+plt.plot(x,linear(x, slope, intercept),label='Linear Fit') #change this label if you have a non-linear fit
+plt.legend(loc='best')
+plt.xlabel("Mass (grams)") #change the units as appropriate
+plt.ylabel("Height (milimeters)")  #change the units as appropriate
+plt.show()
